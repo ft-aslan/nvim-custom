@@ -48,16 +48,13 @@ require("lazy").setup({ 'folke/tokyonight.nvim',
             { 'rafamadriz/friendly-snippets' }, -- Optional
         }
     },
-    { 'akinsho/toggleterm.nvim' }, { 'folke/neodev.nvim' }, { 'folke/trouble.nvim' },
-    { 'onsails/lspkind.nvim' }, { 'folke/which-key.nvim', config = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-    require("which-key").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-    })
-end }, { 'lewis6991/gitsigns.nvim' },
+    { 'akinsho/toggleterm.nvim' }, { 'folke/neodev.nvim', config=function() 
+        -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+        require("neodev").setup({
+            -- add any options here, or leave empty to use the default settings
+        }) end}, 
+    { 'folke/trouble.nvim' },
+    { 'onsails/lspkind.nvim' }, { 'folke/which-key.nvim'},  { 'lewis6991/gitsigns.nvim' },
     {
         'glepnir/dashboard-nvim',
         event = 'VimEnter',
@@ -65,4 +62,4 @@ end }, { 'lewis6991/gitsigns.nvim' },
     }, { 'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
     { 'nvim-tree/nvim-tree.lua',   dependencies = 'nvim-tree/nvim-web-devicons' },
     { 'nvim-lualine/lualine.nvim', dependencies = 'nvim-tree/nvim-web-devicons' }, 'tpope/vim-fugitive',
-    'mbbill/undotree', 'folke/zen-mode.nvim' })
+    'mbbill/undotree', 'folke/zen-mode.nvim', 'rebelot/kanagawa.nvim' })

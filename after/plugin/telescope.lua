@@ -4,9 +4,14 @@ local telescope = require('telescope').setup({
 	defaults = {
 		mappings = {
 			n = {
-				["<M-j>"] = actions.toggle_selection + actions.move_selection_better,
-				["<M-k>"] = actions.toggle_selection + actions.move_selection_worse
+				["<M-j>"] = actions.toggle_selection + actions.move_selection_worse,
+				["<M-k>"] = actions.toggle_selection + actions.move_selection_better
+			},
+            i = {
+				["<M-j>"] = actions.toggle_selection + actions.move_selection_worse,
+				["<M-k>"] = actions.toggle_selection + actions.move_selection_better
 			}
+
 		}
 	}
 }

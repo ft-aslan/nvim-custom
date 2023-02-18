@@ -4,3 +4,4 @@ require('bufferline').setup({options = {
 }})
 vim.keymap.set("n","<leader>tn","<cmd>BufferLineMoveNext<cr>")
 vim.keymap.set("n","<leader>tp","<cmd>BufferLineMovePrev<cr>")
+--vim.keymap.set("n","<leader>", function() print("A: ") end)
