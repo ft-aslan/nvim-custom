@@ -1,3 +1,4 @@
+vim.api.nvim_exec('language en_US', true)
 vim.opt.guifont = { "FiraCode NF", ":h11" }
 
 -- vim.opt.wildchar = ("<M-j>"):byte()

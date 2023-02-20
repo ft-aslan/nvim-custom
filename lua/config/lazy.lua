@@ -9,11 +9,32 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
-	"folke/tokyonight.nvim",
-	{ "nvim-telescope/telescope.nvim", dependencies = { { "nvim-lua/plenary.nvim" } } },
+	spec = {
+		-- import any extras modules here
+		-- { import = "lazyvim.plugins.extras.lang.typescript" },
+		-- { import = "lazyvim.plugins.extras.lang.json" },
+		-- { import = "lazyvim.plugins.extras.ui.mini-animate" },
+		-- import/override with your plugins
+		{ import = "plugins" },
+	  },
+	  performance = {
+		rtp = {
+		  -- disable some rtp plugins
+		  disabled_plugins = {
+			"gzip",
+			-- "matchit",
+			-- "matchparen",
+			-- "netrwPlugin",
+			"tarPlugin",
+			"tohtml",
+			"tutor",
+			"zipPlugin",
+		  },
+		},
+	  },
 	{ "nvim-treesitter/nvim-treesitter" },
 	{
 		"utilyre/barbecue.nvim",
@@ -51,7 +72,6 @@ require("lazy").setup({
 			{ "rafamadriz/friendly-snippets" }, -- Optional
 		},
 	},
-	{ "akinsho/toggleterm.nvim" },
 	{
 		"folke/neodev.nvim",
 		config = function()
@@ -82,10 +102,6 @@ require("lazy").setup({
 	"jose-elias-alvarez/null-ls.nvim",
 	"MunifTanjim/prettier.nvim",
 	"numToStr/Comment.nvim",
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-	},
 	"mg979/vim-visual-multi",
 	"kylechui/nvim-surround",
 	{
@@ -100,7 +116,6 @@ require("lazy").setup({
 		},
 	},
 	{ "MunifTanjim/nui.nvim" },
-	{ "nvim-telescope/telescope-project.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
 	{ "catppuccin/nvim", name = "catppuccin" },
 	{ "max397574/better-escape.nvim" },
 	{ "RRethy/vim-illuminate" },
