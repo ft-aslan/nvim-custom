@@ -10,8 +10,11 @@ return {
     bottom = 0,
 
   },
+  allow_win32_input_mode = false,
+  window_close_confirmation = 'NeverPrompt',
   keys = {
        -- paste from the clipboard
+       { key = 'F', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
        { key = 'v', mods = 'CTRL', action = actions.PasteFrom 'Clipboard' },
   }
 }

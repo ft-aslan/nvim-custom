@@ -1,6 +1,6 @@
-local wilder = require("wilder")
-wilder.setup({ modes = { ":", "/", "?" }, next_key = "<M-j>", previous_key = "<M-k>" })
--- wilder.set_option('renderer', wilder.popupmenu_renderer(
+-- local wilder = require("wilder")
+-- wilder.setup({ modes = { ":", "/", "?" }, next_key = "<M-j>", previous_key = "<M-k>" })
+-- -- wilder.set_option('renderer', wilder.popupmenu_renderer(
 --   wilder.popupmenu_border_theme({
 --      highlights = {
 --       border = 'Normal', -- highlight to use for the border

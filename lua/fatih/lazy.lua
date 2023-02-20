@@ -99,6 +99,11 @@ require("lazy").setup({
 			"rcarriga/nvim-notify",
 		},
 	},
-    {'MunifTanjim/nui.nvim'},
-    {'nvim-telescope/telescope-project.nvim', dependencies={"nvim-telescope/telescope.nvim"}},{ "catppuccin/nvim", name = "catppuccin" },
+	{ "MunifTanjim/nui.nvim" },
+	{ "nvim-telescope/telescope-project.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
+	{ "catppuccin/nvim", name = "catppuccin" },
+	{ "max397574/better-escape.nvim" },
+	{ "RRethy/vim-illuminate" },
+    {"petertriho/nvim-scrollbar"},
+    {"gbprod/cutlass.nvim"}
 })

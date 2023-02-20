@@ -14,7 +14,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-space>"] = cmp.mapping.confirm(),
 	["<C-y>"] = cmp.mapping.confirm(),
 })
-
 lsp.setup_nvim_cmp({
 	mapping = cmp_mappings,
 	formatting = {
@@ -82,40 +81,56 @@ lsp.set_preferences({
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
+	vim.keymap.set("n", "<leader>rn", function()
+		vim.lsp.buf.rename()
+	end, { buffer = bufnr, remap = false, desc = "[R]e[n]ame" })
+	vim.keymap.set("n", "<leader>ca", function()
+		vim.lsp.buf.code_action()
+	end, { buffer = bufnr, remap = false, desc = "[C]ode [A]ction" })
 	vim.keymap.set("n", "gd", function()
 		vim.lsp.buf.definition()
-	end, opts)
+	end, { buffer = bufnr, remap = false, desc = "[G]oto [D]efinition" })
+	vim.keymap.set("n", "gr", function()
+		require("telescope.builtin").lsp_references()
+	end, { buffer = bufnr, remap = false, desc = "[G]oto [R]eferences" })
+	vim.keymap.set("n", "gI", function()
+		vim.lsp.buf.implementation()
+	end, { buffer = bufnr, remap = false, desc = "[G]oto [I]mplementation" })
+	vim.keymap.set("n", "<leader>D", function()
+		vim.lsp.buf.type_definition()
+	end, { buffer = bufnr, remap = false, desc = "Type [D]efinition" })
+	vim.keymap.set("n", "<leader>ds", function()
+		require('telescope.builtin').lsp_document_symbols()
+	end, { buffer = bufnr, remap = false, desc = "[D]ocument [S]ymbols" })
+	vim.keymap.set("n", "<leader>ws", function()
+        require('telescope.builtin').lsp_dynamic_workspace_symbols()
+	end, { buffer = bufnr, remap = false, desc = "[W]orkspace [S]ymbols" })
+
 	vim.keymap.set("n", "K", function()
 		vim.lsp.buf.hover()
-	end, opts)
-	vim.keymap.set("n", "<leader>vws", function()
-		vim.lsp.buf.workspace_symbol()
-	end, opts)
+	end, { buffer = bufnr, remap = false, desc = "Hover Documentation" })
+	vim.keymap.set("n", "<C-k>", function()
+		vim.lsp.buf.signature_help()
+	end, { buffer = bufnr, remap = false, desc = "Signature Documentation" })
+
+
 	vim.keymap.set("n", "<leader>vd", function()
 		vim.diagnostic.open_float()
-	end, opts)
+	end, { buffer = bufnr, remap = false, desc = "" })
 	vim.keymap.set("n", "[d", function()
 		vim.diagnostic.goto_next()
-	end, opts)
+	end, { buffer = bufnr, remap = false, desc = "" })
 	vim.keymap.set("n", "]d", function()
 		vim.diagnostic.goto_prev()
-	end, opts)
-	vim.keymap.set("n", "<leader>vca", function()
-		vim.lsp.buf.code_action()
-	end, opts)
-	vim.keymap.set("n", "<leader>vrr", function()
-		vim.lsp.buf.references()
-	end, opts)
-	vim.keymap.set("n", "<leader>vrn", function()
-		vim.lsp.buf.rename()
-	end, opts)
-	vim.keymap.set("i", "<C-h>", function()
-		vim.lsp.buf.signature_help()
-	end, opts)
+	end, { buffer = bufnr, remap = false, desc = "" })
+
+	-- Create a command `:Format` local to the LSP buffer
+	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+		vim.lsp.buf.format()
+	end, { desc = "Format current buffer with LSP" })
 end)
 lsp.setup()
 
 vim.diagnostic.config({
 	virtual_text = true,
-
 })
