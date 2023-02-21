@@ -35,3 +35,14 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 
 vim.o.mouse = 'a';
+-- set termguicolors for opacity animation
+vim.opt.termguicolors = true
+
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+
+-- timeout for which_key
+vim.o.timeout = true
+vim.o.timeoutlen = 300

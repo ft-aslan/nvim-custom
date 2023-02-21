@@ -1,5 +1,8 @@
-require('dashboard').setup(
-  {
+return {
+  "glepnir/dashboard-nvim",
+  event = "VimEnter",
+  dependencies = { { "nvim-tree/nvim-web-devicons" } },
+  opts = {
     theme = 'hyper',
     config = {
       week_header = {
@@ -56,4 +59,5 @@ require('dashboard').setup(
   --     footer = {}  --your footer
   --   }
   -- }
-)
+
+}
